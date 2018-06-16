@@ -1,7 +1,9 @@
-const Deck = require('./Deck');
+import Deck from './Deck';
+import Game from './Game';
 
+let game = new Game(cardDeck);
 let cardDeck = new Deck();
-cardDeck.startNewGame();
+game.startNewGame();
 console.log('Results of shuffle: ', cardDeck.gameDeck);
 
 /*

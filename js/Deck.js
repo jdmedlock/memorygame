@@ -37,15 +37,14 @@ module.exports = class Deck {
       {symbol: 'fa-bomb', visible: false, matched: false},
       {symbol: 'fa-bomb', visible: false, matched: false},
     ];
-    this.gameDeck = [];
   }
 
   /**
-   * @description Start a new game by shuffling the template card deck
-   * to create a new game deck
+   * @description Get the template card deck
+   * @returns {Array} Card deck
    */
-  startNewGame() {
-    this.gameDeck = this.shuffle(this.cardDeck);
+  getCardDeck() {
+    return this.cardDeck;
   }
 
   /**
