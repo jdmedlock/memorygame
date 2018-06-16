@@ -1,7 +1,28 @@
 /*
- * Create a list that holds all of your cards
+ * Define the card deck
+ * 
+ * symbol - FontAwesome icon name
+ * state - 'facedown': card is face down
+ *         'faceup': card is face up (symbol showing)
  */
-
+let cardDeck = [
+    {symbol: 'fa-diamond', state: 'facedown'},
+    {symbol: 'fa-diamond', state: 'facedown'},
+    {symbol: 'fa-paper-plane-o', state: 'facedown'},
+    {symbol: 'fa-paper-plane-o', state: 'facedown'},
+    {symbol: 'fa-anchor', state: 'facedown'},
+    {symbol: 'fa-anchor', state: 'facedown'},
+    {symbol: 'fa-bolt', state: 'facedown'},
+    {symbol: 'fa-bolt', state: 'facedown'},
+    {symbol: 'fa-cube', state: 'facedown'},
+    {symbol: 'fa-cube', state: 'facedown'},
+    {symbol: 'fa-leaf', state: 'facedown'},
+    {symbol: 'fa-leaf', state: 'facedown'},
+    {symbol: 'fa-bicycle', state: 'facedown'},
+    {symbol: 'fa-bicycle', state: 'facedown'},
+    {symbol: 'fa-bomb', state: 'facedown'},
+    {symbol: 'fa-bomb', state: 'facedown'},
+];
 
 /*
  * Display the cards on the page
@@ -25,6 +46,7 @@ function shuffle(array) {
     return array;
 }
 
+console.log('Results of shuffle: ', shuffle(cardDeck));
 
 /*
  * set up the event listener for a card. If a card is clicked:
