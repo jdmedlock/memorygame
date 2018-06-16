@@ -1,28 +1,30 @@
 /*
- * Define the card deck
+ * Define the card decks cardDeck is the template deck defining the 
+ * attributes of each card, while gameDeck is the shuffled copy of 
+ * created at the start of each game.
  * 
  * symbol - FontAwesome icon name
- * state - 'facedown': card is face down
- *         'faceup': card is face up (symbol showing)
+ * visible - true if the card should be faceup; false for facedown
  */
-let cardDeck = [
-    {symbol: 'fa-diamond', state: 'facedown'},
-    {symbol: 'fa-diamond', state: 'facedown'},
-    {symbol: 'fa-paper-plane-o', state: 'facedown'},
-    {symbol: 'fa-paper-plane-o', state: 'facedown'},
-    {symbol: 'fa-anchor', state: 'facedown'},
-    {symbol: 'fa-anchor', state: 'facedown'},
-    {symbol: 'fa-bolt', state: 'facedown'},
-    {symbol: 'fa-bolt', state: 'facedown'},
-    {symbol: 'fa-cube', state: 'facedown'},
-    {symbol: 'fa-cube', state: 'facedown'},
-    {symbol: 'fa-leaf', state: 'facedown'},
-    {symbol: 'fa-leaf', state: 'facedown'},
-    {symbol: 'fa-bicycle', state: 'facedown'},
-    {symbol: 'fa-bicycle', state: 'facedown'},
-    {symbol: 'fa-bomb', state: 'facedown'},
-    {symbol: 'fa-bomb', state: 'facedown'},
+const cardDeck = [
+    {symbol: 'fa-diamond', visible: false, matched: false},
+    {symbol: 'fa-diamond', visible: false, matched: false},
+    {symbol: 'fa-paper-plane-o', visible: false, matched: false},
+    {symbol: 'fa-paper-plane-o', visible: false, matched: false},
+    {symbol: 'fa-anchor', visible: false, matched: false},
+    {symbol: 'fa-anchor', visible: false, matched: false},
+    {symbol: 'fa-bolt', visible: false, matched: false},
+    {symbol: 'fa-bolt', visible: false, matched: false},
+    {symbol: 'fa-cube', visible: false, matched: false},
+    {symbol: 'fa-cube', visible: false, matched: false},
+    {symbol: 'fa-leaf', visible: false, matched: false},
+    {symbol: 'fa-leaf', visible: false, matched: false},
+    {symbol: 'fa-bicycle', visible: false, matched: false},
+    {symbol: 'fa-bicycle', visible: false, matched: false},
+    {symbol: 'fa-bomb', visible: false, matched: false},
+    {symbol: 'fa-bomb', visible: false, matched: false},
 ];
+let gameDeck = null;
 
 /*
  * Display the cards on the page
@@ -46,7 +48,8 @@ function shuffle(array) {
     return array;
 }
 
-console.log('Results of shuffle: ', shuffle(cardDeck));
+gameDeck = shuffle(cardDeck);
+console.log('Results of shuffle: ', gameDeck);
 
 /*
  * set up the event listener for a card. If a card is clicked:
