@@ -1,10 +1,7 @@
-import Deck from './Deck';
-import Game from './Game';
+import GamePlay from './GamePlay';
 
-let game = new Game(cardDeck);
-let cardDeck = new Deck();
+const game = new GamePlay();
 game.startNewGame();
-console.log('Results of shuffle: ', cardDeck.gameDeck);
 
 /*
  * set up the event listener for a card. If a card is clicked:

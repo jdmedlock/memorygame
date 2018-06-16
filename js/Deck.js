@@ -1,9 +1,5 @@
-/**
- * @description Manage the deck of cards for the Memory Game
- * @export
- * @class Deck
- */
-module.exports = class Deck {
+
+class Deck {
   /**
    * @description Creates an instance of the Deck class.
    * @memberof Deck
@@ -19,7 +15,7 @@ module.exports = class Deck {
      * matched - true if the card was sucessfully matched; false if it is
      * still unmatched
      */
-    this.cardDeck = [
+    this.templateCardDeck = [
       {symbol: 'fa-diamond', visible: false, matched: false},
       {symbol: 'fa-diamond', visible: false, matched: false},
       {symbol: 'fa-paper-plane-o', visible: false, matched: false},
@@ -40,29 +36,27 @@ module.exports = class Deck {
   }
 
   /**
-   * @description Get the template card deck
-   * @returns {Array} Card deck
-   */
-  getCardDeck() {
-    return this.cardDeck;
-  }
-
-  /**
    * @description Shuffle a deck of game cards. This function is based on
    * http://stackoverflow.com/a/2450976
-   * @memberof Rate
+   * @returns {Object[]} Shuffled card deck
+   * @memberof Deck
    */
-  shuffle(deck) {
-    var currentIndex = deck.length, temporaryValue, randomIndex;
+  shuffle() {
+    let cardDeck = this.templateCardDeck;
+    let currentIndex = cardDeck.length;
+    let temporaryValue;
+    let randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        temporaryValue = deck[currentIndex];
-        deck[currentIndex] = deck[randomIndex];
-        deck[randomIndex] = temporaryValue;
+        temporaryValue = cardDeck[currentIndex];
+        cardDeck[currentIndex] = cardDeck[randomIndex];
+        cardDeck[randomIndex] = temporaryValue;
     }
 
-    return deck;
+    return cardDeck;
   }
-};
+}
+
+export default Deck;
