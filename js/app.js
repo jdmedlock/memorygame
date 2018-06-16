@@ -1,52 +1,8 @@
-/*
- * Define the card deck
- * 
- * symbol - FontAwesome icon name
- * state - 'facedown': card is face down
- *         'faceup': card is face up (symbol showing)
- */
-let cardDeck = [
-    {symbol: 'fa-diamond', state: 'facedown'},
-    {symbol: 'fa-diamond', state: 'facedown'},
-    {symbol: 'fa-paper-plane-o', state: 'facedown'},
-    {symbol: 'fa-paper-plane-o', state: 'facedown'},
-    {symbol: 'fa-anchor', state: 'facedown'},
-    {symbol: 'fa-anchor', state: 'facedown'},
-    {symbol: 'fa-bolt', state: 'facedown'},
-    {symbol: 'fa-bolt', state: 'facedown'},
-    {symbol: 'fa-cube', state: 'facedown'},
-    {symbol: 'fa-cube', state: 'facedown'},
-    {symbol: 'fa-leaf', state: 'facedown'},
-    {symbol: 'fa-leaf', state: 'facedown'},
-    {symbol: 'fa-bicycle', state: 'facedown'},
-    {symbol: 'fa-bicycle', state: 'facedown'},
-    {symbol: 'fa-bomb', state: 'facedown'},
-    {symbol: 'fa-bomb', state: 'facedown'},
-];
+const Deck = require('./Deck');
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-console.log('Results of shuffle: ', shuffle(cardDeck));
+let cardDeck = new Deck();
+cardDeck.startNewGame();
+console.log('Results of shuffle: ', cardDeck.gameDeck);
 
 /*
  * set up the event listener for a card. If a card is clicked:
