@@ -8,6 +8,7 @@
 
 * [Overview](#overview)
 * [How to Play](#how-to-play)
+* [Player UI Feature](#player-ui-features)
 * [Change Log](#change-log)
 * [Contributing](#contributing)
 * [Authors](#authors)
@@ -36,7 +37,7 @@ different symbols they will both be flipped back over.
 
 The game ends when all eight pairs of matching cards have been revealed.
 
-## UI Features
+## Player UI Features
 
 In addition to the basic game play several UI components have been implemented
 to provide the player with features to improve the overall experience.
