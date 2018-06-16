@@ -65,7 +65,7 @@ the API and the documentation.
 
 #### Git Branches
 
-![GitAClue Git Workflow](https://github.com/jdmedlock/memorygame/blob/master/docs/Git%20-%20Team%20Workflow.png)
+![MemoryGame Git Workflow](https://github.com/jdmedlock/memorygame/blob/master/docs/Git%20-%20Team%20Workflow.png)
 
 - `master`: Only updated from PR's from the `development` branch for release.
 This branch always reflects the current production release.
