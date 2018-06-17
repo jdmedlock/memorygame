@@ -9,16 +9,28 @@ class GameUI {
    * @memberof GameUI
    */
   buildDeckFragment(gameDeck) {
-    const deckNode = document.createDocumentFragment();
+    const deckFragment = document.createDocumentFragment();
     gameDeck.forEach((card) => {
       const liElement = document.createElement('li');
       liElement.setAttribute('class','card');
       const iElement = document.createElement('i');
       iElement.setAttribute('class',`fa ${card.symbol}`);
       liElement.appendChild(iElement);
-      deckNode.appendChild(liElement);
+      deckFragment.appendChild(liElement);
     });
-    return deckNode;
+    return deckFragment;
+  }
+
+  /**
+   * @description Process a click on a game card
+   * @param {Event} event Event object for the card that was clicked
+   * @memberof GameUI
+   */
+  addCardListener(deckElement) {
+    deckElement.addEventListener('click', function(event) {
+      event.stopPropagation();
+      console.log('Card was clicked');
+    });
   }
 
 }

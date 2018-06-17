@@ -29,7 +29,9 @@ class GamePlay {
   startNewGame() {
     this.gameDeck = this.deck.shuffle();
     const deckFragment = this.gameUI.buildDeckFragment(this.gameDeck);
-    document.querySelector('.deck').appendChild(deckFragment);
+    const deckElement = document.querySelector('.deck');
+    deckElement.appendChild(deckFragment);
+    this.gameUI.addCardListener(deckElement);
   }
 
 }
