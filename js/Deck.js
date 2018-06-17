@@ -11,27 +11,27 @@ class Deck {
      * created at the start of each game.
      *
      * symbol - FontAwesome icon name
-     * visible - true if the card should be faceup; false for facedown
-     * matched - true if the card was sucessfully matched; false if it is
-     * still unmatched
+     * faceup - true if the card is faceup; false if facedown
+     * matched - true if the card has been sucessfully matched; false if it
+     * remains unmatched
      */
     this.templateCardDeck = [
-      {symbol: 'fa-diamond', visible: false, matched: false},
-      {symbol: 'fa-diamond', visible: false, matched: false},
-      {symbol: 'fa-paper-plane-o', visible: false, matched: false},
-      {symbol: 'fa-paper-plane-o', visible: false, matched: false},
-      {symbol: 'fa-anchor', visible: false, matched: false},
-      {symbol: 'fa-anchor', visible: false, matched: false},
-      {symbol: 'fa-bolt', visible: false, matched: false},
-      {symbol: 'fa-bolt', visible: false, matched: false},
-      {symbol: 'fa-cube', visible: false, matched: false},
-      {symbol: 'fa-cube', visible: false, matched: false},
-      {symbol: 'fa-leaf', visible: false, matched: false},
-      {symbol: 'fa-leaf', visible: false, matched: false},
-      {symbol: 'fa-bicycle', visible: false, matched: false},
-      {symbol: 'fa-bicycle', visible: false, matched: false},
-      {symbol: 'fa-bomb', visible: false, matched: false},
-      {symbol: 'fa-bomb', visible: false, matched: false},
+      {symbol: 'fa-diamond', faceup: false, matched: false},
+      {symbol: 'fa-diamond', faceup: false, matched: false},
+      {symbol: 'fa-paper-plane-o', faceup: false, matched: false},
+      {symbol: 'fa-paper-plane-o', faceup: false, matched: false},
+      {symbol: 'fa-anchor', faceup: false, matched: false},
+      {symbol: 'fa-anchor', faceup: false, matched: false},
+      {symbol: 'fa-bolt', faceup: false, matched: false},
+      {symbol: 'fa-bolt', faceup: false, matched: false},
+      {symbol: 'fa-cube', faceup: false, matched: false},
+      {symbol: 'fa-cube', faceup: false, matched: false},
+      {symbol: 'fa-leaf', faceup: false, matched: false},
+      {symbol: 'fa-leaf', faceup: false, matched: false},
+      {symbol: 'fa-bicycle', faceup: false, matched: false},
+      {symbol: 'fa-bicycle', faceup: false, matched: false},
+      {symbol: 'fa-bomb', faceup: false, matched: false},
+      {symbol: 'fa-bomb', faceup: false, matched: false},
     ];
   }
 

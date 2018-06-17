@@ -10,6 +10,8 @@ class GamePlay {
     this.deck = new Deck();
     this.gameDeck = [];
     this.gameUI = new GameUI();
+    this.turnCounter = 0;
+    this.playerRating = 3;
   }
 
   /**
