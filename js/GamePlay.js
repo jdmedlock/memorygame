@@ -1,5 +1,3 @@
-import Deck from './Deck';
-import GameUI from './GameUI';
 
 class GamePlay {
   /**
@@ -7,11 +5,29 @@ class GamePlay {
    * @memberof GamePlay
    */
   constructor() {
-    this.deck = new Deck();
+    this.deck = null;
     this.gameDeck = [];
-    this.gameUI = new GameUI();
+    this.gameUI = null;
     this.turnCounter = 0;
     this.playerRating = 3;
+  }
+
+  /**
+   * @description Set the reference to the Deck object
+   * @param {Object} deck Reference to an instance of the Deck class
+   * @memberof GamePlay
+   */
+  setDeck(deck) {
+    this.deck = deck;
+  }
+
+  /**
+   * @description Set the reference to the GameUI object
+   * @param {Object} gameUI Reference to an instance of the GameUI class
+   * @memberof GamePlay
+   */
+  setGameUI(gameUI) {
+    this.gameUI = gameUI;
   }
 
   /**
@@ -30,10 +46,7 @@ class GamePlay {
    */
   startNewGame() {
     this.gameDeck = this.deck.shuffle();
-    const deckFragment = this.gameUI.buildDeckFragment(this.gameDeck);
-    const deckElement = document.querySelector('.deck');
-    deckElement.appendChild(deckFragment);
-    this.gameUI.addCardListener(deckElement);
+    const deckFragment = this.gameUI.buildDeck(this.gameDeck);
   }
 
 }

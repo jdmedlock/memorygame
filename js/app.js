@@ -1,7 +1,21 @@
+import Deck from './Deck';
 import GamePlay from './GamePlay';
+import GameUI from './GameUI';
 
-const game = new GamePlay();
-game.startNewGame();
+// Instantiate the classes that implement the games functionality.
+const deck = new Deck();
+const gamePlay = new GamePlay();
+const gameUI = new GameUI();
+
+gamePlay.setDeck(deck);
+gamePlay.setGameUI(gameUI);
+gamePlay.startNewGame();
+
+// Define event handlers for each UI element
+const deckElement = document.querySelector('.deck');
+deckElement.addEventListener('click', (event) => {
+  gameUI.cardWasClicked(event);
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
