@@ -22,14 +22,16 @@ class GameUI {
   }
 
   /**
-   * @description Process a click on a game card
-   * @param {Event} event Event object for the card that was clicked
+   * @description Enable an event listener to process clicks on the game cards
+   * @param {Object} deckElement DOM element containing the displayed card deck
    * @memberof GameUI
    */
   addCardListener(deckElement) {
     deckElement.addEventListener('click', function(event) {
       event.stopPropagation();
-      console.log('Card was clicked');
+      let selectedCard = event.target;
+      let cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
+      selectedCard.setAttribute('class', cardAttributes);
     });
   }
 
