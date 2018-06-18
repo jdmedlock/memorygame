@@ -54,9 +54,11 @@ class GamePlay {
    * @memberof GamePlay
    */
   startNewGame() {
-    this.turnCount = 1;
+    this.firstCard = undefined;
     this.flipCount = 0;
-    this.gameDeck = this.deck.shuffle();
+    this.turnCount = 0;
+    this.playerRating = MAX_PLAYER_RATING;
+   this.gameDeck = this.deck.shuffle();
     const deckFragment = this.gameUI.buildDeck(this.gameDeck);
   }
 
@@ -89,11 +91,7 @@ class GamePlay {
     }
 
     if (this.turnCount >= TURN_LIMIT) {
-      this.firstCard = undefined;
-      this.flipCount = 0;
-      this.turnCount = 0;
-      this.playerRating = MAX_PLAYER_RATING;
-      return true;
+     return true;
     }
     return false;
   }
