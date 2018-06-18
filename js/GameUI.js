@@ -9,11 +9,12 @@ class GameUI {
    */
   buildDeck(gameDeck) {
     const deckFragment = document.createDocumentFragment();
-    gameDeck.forEach((card) => {
+    gameDeck.forEach((card, cardIndex) => {
       const liElement = document.createElement('li');
-      liElement.setAttribute('class','card');
+      liElement.setAttribute('id', `${cardIndex}`);
+      liElement.setAttribute('class', 'card');
       const iElement = document.createElement('i');
-      iElement.setAttribute('class',`fa ${card.symbol}`);
+      iElement.setAttribute('class', `fa ${card.symbol}`);
       liElement.appendChild(iElement);
       deckFragment.appendChild(liElement);
     });
@@ -23,35 +24,17 @@ class GameUI {
   }
 
   /**
-   * @description Enable an event listener to process clicks on the game cards
-   * @param {Object} deckElement DOM element containing the displayed card deck
+   * @description Turn a card facedown on the game board
+   * @param {Object} selectedCard DOM element referencing the card
    * @memberof GameUI
    */
-  OLDaddCardListener(deckElement) {
-    deckElement.addEventListener('click', function(event) {
-      event.stopPropagation();
-      this.turnCardFaceUp(event.target);
-      /*
-      let selectedCard = event.target;
-      let cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
-      selectedCard.setAttribute('class', cardAttributes);
-      */
-    });
-  }
-
-  /**
-   * @description Process clicks on the game cards
-   * @param {Object} deckElement DOM element containing the displayed card deck
-   * @memberof GameUI
-   */
-  cardWasClicked(event) {
-    event.stopPropagation();
-    this.turnCardFaceUp(event.target);
+  turnCardFaceDown(selectedCard) {
+    selectedCard.setAttribute('class', 'card');
   }
 
   /**
    * @description Turn a card faceup on the game board
-   * @param {Object} selectedCard DOM element referencing the card that was clicked
+   * @param {Object} selectedCard DOM element referencing the card
    * @memberof GameUI
    */
   turnCardFaceUp(selectedCard) {

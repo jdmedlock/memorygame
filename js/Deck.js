@@ -36,6 +36,21 @@ class Deck {
   }
 
   /**
+   * @description Check to see if two cards have matching symbols
+   * @param {Object[]} cardDeck Array of card objects used in the game
+   * @param {Number} firstCardIndex Index of the first card to compare
+   * @param {Number} secondCardIndex Index of the second card to compare
+   * @returns {Boolean} True if the cards match, otherwise false if no match
+   * @memberof Deck
+   */
+  isSymbolMatch(cardDeck, firstCardIndex, secondCardIndex) {
+    if (cardDeck[firstCardIndex].symbol === cardDeck[secondCardIndex].symbol) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * @description Shuffle a deck of game cards. This function is based on
    * http://stackoverflow.com/a/2450976
    * @returns {Object[]} Shuffled card deck
