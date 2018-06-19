@@ -59,6 +59,12 @@ class GameUI {
     selectedCard.setAttribute('class', cardAttributes);
   }
 
+
+  updateMoveCount(moveCount) {
+    const countElement = document.querySelector('.moves');
+    countElement.innerText = moveCount;
+  }
+
 }
 
 export default GameUI;

@@ -1,7 +1,7 @@
 
 const MAX_PLAYER_RATING = 3;
 const TWO_SECONDS = 1000;
-const TURN_LIMIT = 7;
+const MATCH_LIMIT = 8;
 
 class GamePlay {
   /**
@@ -15,8 +15,10 @@ class GamePlay {
     this.deck = null;
     this.gameDeck = [];
     this.gameUI = null;
-    this.turnCount = 0;
     this.playerRating = MAX_PLAYER_RATING;
+    this.moveCount = 0;
+    this.flipCount = 0;
+    this.matchCount = 0;
     this.firstCard = undefined;
     this.wait = ms => new Promise((r, j) => setTimeout(r, ms))
   }
@@ -54,10 +56,11 @@ class GamePlay {
    * @memberof GamePlay
    */
   startNewGame() {
-    this.firstCard = undefined;
-    this.flipCount = 0;
-    this.turnCount = 0;
     this.playerRating = MAX_PLAYER_RATING;
+    this.moveCount = 0;
+    this.flipCount = 0;
+    this.matchCount = 0;
+    this.firstCard = undefined;
     this.gameDeck = this.deck.shuffle();
     const deckFragment = this.gameUI.buildDeck(this.gameDeck);
   }
@@ -72,10 +75,11 @@ class GamePlay {
    * @memberof GamePlay
    */
   turn(selectedCardIndex) {
-    this.turnCount += 1;
-    this.flipCount += 1;
     this.gameUI.turnCardFaceUp(selectedCardIndex);
+    this.moveCount += 1;
+    this.gameUI.updateMoveCount(this.moveCount);
 
+    this.flipCount += 1;
     if (this.flipCount === 1) {
       this.firstCard = selectedCardIndex;
     } else {
@@ -86,7 +90,7 @@ class GamePlay {
       }
     }
 
-    if (this.turnCount >= TURN_LIMIT) {
+    if (this.matchCount >= MATCH_LIMIT) {
      return true;
     }
     return false;
@@ -103,7 +107,6 @@ class GamePlay {
     this.firstCard = undefined;
     this.flipCount = 0;
   }
-
 
   /**
    * @description Process a pair of selected cards whose symbols don't match
