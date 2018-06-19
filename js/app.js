@@ -14,8 +14,7 @@ gamePlay.startNewGame();
 // Define event handlers for each UI element
 const deckElement = document.querySelector('.deck');
 deckElement.addEventListener('click', (event) => {
-  console.log('selected card id: ', event.target.getAttribute('id'));
-  gamePlay.turn(event.target, event.target.getAttribute('id'));
+  gamePlay.turn(event.target.getAttribute('id'));
 });
 
 /*

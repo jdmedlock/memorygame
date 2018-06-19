@@ -25,20 +25,37 @@ class GameUI {
 
   /**
    * @description Turn a card facedown on the game board
-   * @param {Object} selectedCard DOM element referencing the card
+   * @param {Number} selectedCard Index of the selected card in the deck
    * @memberof GameUI
    */
-  turnCardFaceDown(selectedCard) {
+  turnCardFaceDown(selectedCardIndex) {
+    const selectedCard = document.getElementById(`${selectedCardIndex}`);
     selectedCard.setAttribute('class', 'card');
   }
 
   /**
    * @description Turn a card faceup on the game board
-   * @param {Object} selectedCard DOM element referencing the card
+   * @param {Number} selectedCard Index of the selected card in the deck
    * @memberof GameUI
    */
-  turnCardFaceUp(selectedCard) {
-    let cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
+  turnCardFaceUp(selectedCardIndex) {
+    const selectedCard = document.getElementById(`${selectedCardIndex}`);
+    const cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
+    selectedCard.setAttribute('class', cardAttributes);
+  }
+
+  /**
+   * @description Mark the selected card as being matched
+   * @param {Number} firstCardCard Index of the first card of the pair in the deck
+   * @param {Number} secondCardCard Index of the second card of the pair in the deck
+   * @memberof GameUI
+   */
+  markMatchedPair(firstCardIndex, secondCardIndex) {
+    let selectedCard = document.getElementById(`${firstCardIndex}`);
+    let cardAttributes = selectedCard.getAttribute('class') + ' match ';
+    selectedCard.setAttribute('class', cardAttributes);
+    selectedCard = document.getElementById(`${secondCardIndex}`);
+    cardAttributes = selectedCard.getAttribute('class') + ' match';
     selectedCard.setAttribute('class', cardAttributes);
   }
 
