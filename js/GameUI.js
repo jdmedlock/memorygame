@@ -81,11 +81,9 @@ class GameUI {
     const openStarClasses = 'rating fa fa-star-o';
     const ratingNodeList = document.querySelectorAll('.rating');
     for (let i = 0; i < starLimit; i += 1) {
-      if ((starCount - i) < 1) {
-        console.log(`Open starCount:${starCount} i:${i}`);
+      if ((starCount - i) <= 0) {
         ratingNodeList[i].setAttribute('class', openStarClasses);
       } else {
-        console.log(`Close starCount:${starCount} i:${i}`);
         ratingNodeList[i].setAttribute('class', closedStarClasses);
       }
     }

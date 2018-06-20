@@ -108,9 +108,9 @@ class GamePlay {
     this.firstCard = undefined;
     this.flipCount = 0;
     this.playerRating = this.playerRating < MAX_PLAYER_RATING 
-      ? this.playerRating++ 
+      ? this.playerRating += 1
       : this.playerRating;
-      this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
+    this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
     }
 
   /**
@@ -126,7 +126,7 @@ class GamePlay {
     this.firstCard = undefined;
     this.flipCount = 0;
     this.playerRating = this.playerRating > MIN_PLAYER_RATING 
-      ? this.playerRating-- 
+      ? this.playerRating -= 1 
       : this.playerRating;
     this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
   }
