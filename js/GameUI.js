@@ -59,10 +59,36 @@ class GameUI {
     selectedCard.setAttribute('class', cardAttributes);
   }
 
-
+  /**
+   * @description Display the current turn count (i.e. moves) 
+   * @param {Number} moveCount Number of turns the player has made in the
+   * current game
+   * @memberof GameUI
+   */
   updateMoveCount(moveCount) {
     const countElement = document.querySelector('.moves');
     countElement.innerText = moveCount;
+  }
+
+  /**
+   * @description Display the current player star rating
+   * @param {Number} starCount Players current star rating
+   * @param {Number} starLimit Maximum possible number of stars 
+   * @memberof GameUI
+   */
+  updatePlayerRating(starCount, starLimit) {
+    const closedStarClasses = 'rating fa fa-star';
+    const openStarClasses = 'rating fa fa-star-o';
+    const ratingNodeList = document.querySelectorAll('.rating');
+    for (let i = 0; i < starLimit; i += 1) {
+      if ((starCount - i) < 1) {
+        console.log(`Open starCount:${starCount} i:${i}`);
+        ratingNodeList[i].setAttribute('class', openStarClasses);
+      } else {
+        console.log(`Close starCount:${starCount} i:${i}`);
+        ratingNodeList[i].setAttribute('class', closedStarClasses);
+      }
+    }
   }
 
 }
