@@ -8,6 +8,10 @@ class GameUI {
    * @memberof GameUI
    */
   buildDeck(gameDeck) {
+    const deckElement = document.querySelector('.deck');
+    if (deckElement.childElementCount > 0) {
+      return;
+    }
     const deckFragment = document.createDocumentFragment();
     gameDeck.forEach((card, cardIndex) => {
       const liElement = document.createElement('li');
@@ -18,8 +22,6 @@ class GameUI {
       liElement.appendChild(iElement);
       deckFragment.appendChild(liElement);
     });
-    //return deckFragment;
-    const deckElement = document.querySelector('.deck');
     deckElement.appendChild(deckFragment);
   }
 

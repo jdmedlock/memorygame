@@ -21,6 +21,7 @@ class GamePlay {
     this.flipCount = 0;
     this.matchCount = 0;
     this.firstCard = undefined;
+    this.deckFragment = null;
     this.wait = ms => new Promise((r, j) => setTimeout(r, ms))
   }
 
@@ -58,12 +59,17 @@ class GamePlay {
    */
   startNewGame() {
     this.playerRating = MIN_PLAYER_RATING;
+    this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
     this.moveCount = 0;
+    this.gameUI.updateMoveCount(this.moveCount);
     this.flipCount = 0;
     this.matchCount = 0;
     this.firstCard = undefined;
     this.gameDeck = this.deck.shuffle();
-    const deckFragment = this.gameUI.buildDeck(this.gameDeck);
+    this.gameUI.buildDeck(this.gameDeck);
+    this.gameDeck.forEach((cardElement, cardIndex) => {
+      this.gameUI.turnCardFaceDown(cardIndex);
+    });  
   }
 
   /**
