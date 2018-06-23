@@ -8,55 +8,89 @@ class GameUI {
    * @memberof GameUI
    */
   buildDeck(gameDeck) {
+    const deckElement = document.querySelector('.deck');
+    if (deckElement.childElementCount > 0) {
+      while (deckElement.firstChild) {
+        deckElement.removeChild(deckElement.firstChild);
+      }
+    }
     const deckFragment = document.createDocumentFragment();
-    gameDeck.forEach((card) => {
+    gameDeck.forEach((card, cardIndex) => {
       const liElement = document.createElement('li');
-      liElement.setAttribute('class','card');
+      liElement.setAttribute('id', `${cardIndex}`);
+      liElement.setAttribute('class', 'card');
       const iElement = document.createElement('i');
-      iElement.setAttribute('class',`fa ${card.symbol}`);
+      iElement.setAttribute('class', `fa ${card.symbol}`);
       liElement.appendChild(iElement);
       deckFragment.appendChild(liElement);
     });
-    //return deckFragment;
-    const deckElement = document.querySelector('.deck');
     deckElement.appendChild(deckFragment);
   }
 
   /**
-   * @description Enable an event listener to process clicks on the game cards
-   * @param {Object} deckElement DOM element containing the displayed card deck
+   * @description Turn a card facedown on the game board
+   * @param {Number} selectedCard Index of the selected card in the deck
    * @memberof GameUI
    */
-  OLDaddCardListener(deckElement) {
-    deckElement.addEventListener('click', function(event) {
-      event.stopPropagation();
-      this.turnCardFaceUp(event.target);
-      /*
-      let selectedCard = event.target;
-      let cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
-      selectedCard.setAttribute('class', cardAttributes);
-      */
-    });
-  }
-
-  /**
-   * @description Process clicks on the game cards
-   * @param {Object} deckElement DOM element containing the displayed card deck
-   * @memberof GameUI
-   */
-  cardWasClicked(event) {
-    event.stopPropagation();
-    this.turnCardFaceUp(event.target);
+  turnCardFaceDown(selectedCardIndex) {
+    const selectedCard = document.getElementById(`${selectedCardIndex}`);
+    selectedCard.setAttribute('class', 'card');
   }
 
   /**
    * @description Turn a card faceup on the game board
-   * @param {Object} selectedCard DOM element referencing the card that was clicked
+   * @param {Number} selectedCard Index of the selected card in the deck
    * @memberof GameUI
    */
-  turnCardFaceUp(selectedCard) {
-    let cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
+  turnCardFaceUp(selectedCardIndex) {
+    const selectedCard = document.getElementById(`${selectedCardIndex}`);
+    const cardAttributes = selectedCard.getAttribute('class') + ' open faceup ';
     selectedCard.setAttribute('class', cardAttributes);
+  }
+
+  /**
+   * @description Mark the selected card as being matched
+   * @param {Number} firstCardCard Index of the first card of the pair in the deck
+   * @param {Number} secondCardCard Index of the second card of the pair in the deck
+   * @memberof GameUI
+   */
+  markMatchedPair(firstCardIndex, secondCardIndex) {
+    let selectedCard = document.getElementById(`${firstCardIndex}`);
+    let cardAttributes = selectedCard.getAttribute('class') + ' match ';
+    selectedCard.setAttribute('class', cardAttributes);
+    selectedCard = document.getElementById(`${secondCardIndex}`);
+    cardAttributes = selectedCard.getAttribute('class') + ' match';
+    selectedCard.setAttribute('class', cardAttributes);
+  }
+
+  /**
+   * @description Display the current turn count (i.e. moves)
+   * @param {Number} moveCount Number of turns the player has made in the
+   * current game
+   * @memberof GameUI
+   */
+  updateMoveCount(moveCount) {
+    const countElement = document.querySelector('.moves');
+    countElement.innerText = moveCount;
+  }
+
+  /**
+   * @description Display the current player star rating
+   * @param {Number} starCount Players current star rating
+   * @param {Number} starLimit Maximum possible number of stars
+   * @memberof GameUI
+   */
+  updatePlayerRating(starCount, starLimit) {
+    const closedStarClasses = 'rating fa fa-star';
+    const openStarClasses = 'rating fa fa-star-o';
+    const ratingNodeList = document.querySelectorAll('.rating');
+    for (let i = 0; i < starLimit; i += 1) {
+      if ((starCount - i) <= 0) {
+        ratingNodeList[i].setAttribute('class', openStarClasses);
+      } else {
+        ratingNodeList[i].setAttribute('class', closedStarClasses);
+      }
+    }
   }
 
 }
