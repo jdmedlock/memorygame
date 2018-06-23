@@ -124,3 +124,36 @@ h1 {
   float: right;
   cursor: pointer;
 }
+
+/*
+ * Styles for the Win Dialog
+ */
+
+.win-dialog {
+  display: none;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.win-dialog .win-icon {
+  font-size: 144px;
+  color: #02ccba;;
+}
+
+.win-dialog .win-banner {
+  font-size: 48px;
+}
+
+.win-dialog .win-summary {
+  font-size: 32px;
+}
+
+.win-dialog .win-button {
+  background-color: #02ccba;
+  border: 1px solid #02b3e4;
+  border-radius: 10px;
+  font-size: 32px;
+  padding: 10px;
+}

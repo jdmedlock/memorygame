@@ -156,6 +156,18 @@ class GameUI {
     }
   }
 
+
+  showWinDialog(playerRating, moveCount) {
+    const gameboard = document.querySelector('.game-board');
+    const gamedialog = document.querySelector('.game-dialog');
+    gameboard.setAttribute('style', 'display: none');
+    document.querySelector('win-minutes').innerText = this.gameTimerMinutes;
+    gamedialog.querySelector('win-seconds').innerText = this.gameTimerSeconds;
+    gamedialog.querySelector('win-moves').innerText = moveCount;
+    gamedialog.querySelector('win-stars').innerText = playerRating;
+    gamedialog.setAttribute('style', 'display: flex');
+  }
+
 }
 
 export default GameUI;
