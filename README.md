@@ -1,6 +1,6 @@
 # Memory Game Project
 
-[![Build Status](https://travis-ci.org/jdmedlock/memorygame.svg?branch=development)](https://travis-ci.org/jdmedlock/memorygame) [![MemoryGame last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/jdmedlock/memorygame)
+[![MemoryGame last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/jdmedlock/memorygame)
 <br/>
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://github.com/jdmedlock/memorygame/)
 
@@ -48,7 +48,7 @@ board, timer, and star rating.
 * Star Rating - From 1 to 3 stars are displayed to provide the player with
 a visual indication of his or her performance. Three stars are displayed at the
 start of the first turn and will be decremented by one star when the player
-fails to match cards in a turn. A star will be added when a turn is "won", 
+fails to match cards in a turn. A star will be added when a turn is "won",
 but at any point in time a minimum of 0 stars and a maximum of 3 stars will
 be displayed.
 
