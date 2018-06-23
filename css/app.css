@@ -82,6 +82,22 @@ h1 {
     font-size: 33px;
 }
 
+@keyframes card-match {
+    from {
+        height: 125px;
+        width: 125px;
+        background: #02b3e4;
+    }
+    50% {
+        height: 150px;
+        width: 150px;
+    }
+    to {
+        height: 125px;
+        width: 125px;
+        background: #02ccba;
+    }
+}
 /*
  * Styles for the Score Panel
  */
