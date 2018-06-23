@@ -67,12 +67,25 @@ class GameUI {
    * @memberof GameUI
    */
   markMatchedPair(firstCardIndex, secondCardIndex) {
-    let selectedCard = document.getElementById(`${firstCardIndex}`);
-    let cardAttributes = selectedCard.getAttribute('class') + ' match ';
-    selectedCard.setAttribute('class', cardAttributes);
-    selectedCard = document.getElementById(`${secondCardIndex}`);
-    cardAttributes = selectedCard.getAttribute('class') + ' match';
-    selectedCard.setAttribute('class', cardAttributes);
+    const firstSelectedCard = document.getElementById(`${firstCardIndex}`);
+    let cardAttributes = firstSelectedCard.getAttribute('class') + ' match ';
+    firstSelectedCard.setAttribute('class', cardAttributes);
+    const secondSelectedCard = document.getElementById(`${secondCardIndex}`);
+    cardAttributes = secondSelectedCard.getAttribute('class') + ' match';
+    secondSelectedCard.setAttribute('class', cardAttributes);
+    this.animateMatchedPair(firstSelectedCard, secondSelectedCard);
+  }
+
+  /**
+   * @description Animate a pair of cards successfully matched by the player
+   * @param {*} firstSelectedCard DOM element of the first matched card
+   * @param {*} secondSelectedCard DOM element of the second matched card
+   * @memberof GameUI
+   */
+  animateMatchedPair(firstSelectedCard, secondSelectedCard) {
+    const matchedPairStyle = 'animation-duration: 1s; animation-name: card-match;';
+    firstSelectedCard.setAttribute("style", matchedPairStyle);
+    secondSelectedCard.setAttribute("style", matchedPairStyle);
   }
 
   /**
