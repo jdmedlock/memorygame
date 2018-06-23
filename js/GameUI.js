@@ -10,7 +10,9 @@ class GameUI {
   buildDeck(gameDeck) {
     const deckElement = document.querySelector('.deck');
     if (deckElement.childElementCount > 0) {
-      return;
+      while (deckElement.firstChild) {
+        deckElement.removeChild(deckElement.firstChild);
+      }
     }
     const deckFragment = document.createDocumentFragment();
     gameDeck.forEach((card, cardIndex) => {
@@ -62,7 +64,7 @@ class GameUI {
   }
 
   /**
-   * @description Display the current turn count (i.e. moves) 
+   * @description Display the current turn count (i.e. moves)
    * @param {Number} moveCount Number of turns the player has made in the
    * current game
    * @memberof GameUI
@@ -75,7 +77,7 @@ class GameUI {
   /**
    * @description Display the current player star rating
    * @param {Number} starCount Players current star rating
-   * @param {Number} starLimit Maximum possible number of stars 
+   * @param {Number} starLimit Maximum possible number of stars
    * @memberof GameUI
    */
   updatePlayerRating(starCount, starLimit) {
