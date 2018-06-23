@@ -7,7 +7,7 @@ const MATCH_LIMIT = 8;
 class GamePlay {
   /**
    * @description Creates an instance of the Game class.
-   * 
+   *
    * Note that the wait function used within this class was taken from
    * https://hackernoon.com/lets-make-a-javascript-wait-function-fa3a2eb88f11
    * @memberof GamePlay
@@ -69,14 +69,15 @@ class GamePlay {
     this.gameUI.buildDeck(this.gameDeck);
     this.gameDeck.forEach((cardElement, cardIndex) => {
       this.gameUI.turnCardFaceDown(cardIndex);
-    });  
+    });
+    this.gameUI.startTimer();
   }
 
   /**
    * @description Control a turn within the game. Within each turn the player
    * flips over a pair of cards If both cards have matching symbols they will
    * remain up. However, if the player chooses two cards with different symbols
-   * they will both be flipped back over. 
+   * they will both be flipped back over.
    * @param {Number} cardIndex Index of the selected card in the deck.
    * @returns {Boolean} True if last turn, otherwise false is returned
    * @memberof GamePlay
@@ -98,7 +99,8 @@ class GamePlay {
     }
 
     if (this.matchCount >= MATCH_LIMIT) {
-     return true;
+      this.gameUI.stopTimer();
+      return true;
     }
     return false;
   }
@@ -110,10 +112,11 @@ class GamePlay {
    * @memberof GamePlay
    */
   pairMatched(firstCardIndex, secondCardIndex) {
+    this.matchCount += 1;
     this.gameUI.markMatchedPair(firstCardIndex, secondCardIndex);
     this.firstCard = undefined;
     this.flipCount = 0;
-    this.playerRating = this.playerRating < MAX_PLAYER_RATING 
+    this.playerRating = this.playerRating < MAX_PLAYER_RATING
       ? this.playerRating += 1
       : this.playerRating;
     this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
@@ -131,8 +134,8 @@ class GamePlay {
     this.gameUI.turnCardFaceDown(secondCardIndex);
     this.firstCard = undefined;
     this.flipCount = 0;
-    this.playerRating = this.playerRating > MIN_PLAYER_RATING 
-      ? this.playerRating -= 1 
+    this.playerRating = this.playerRating > MIN_PLAYER_RATING
+      ? this.playerRating -= 1
       : this.playerRating;
     this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
   }
