@@ -76,10 +76,16 @@ class GameUI {
     this.animateMatchedPair(firstSelectedCard, secondSelectedCard);
   }
 
+  /**
+   * @description Animate a pair of cards successfully matched by the player
+   * @param {*} firstSelectedCard DOM element of the first matched card
+   * @param {*} secondSelectedCard DOM element of the second matched card
+   * @memberof GameUI
+   */
   animateMatchedPair(firstSelectedCard, secondSelectedCard) {
-    const matchedPairStyle = 'animation-duration: 2s; animation-name: card-match;';
-    firstSelectedCard.setAttribute("style",matchedPairStyle);
-    secondSelectedCard.setAttribute("style",matchedPairStyle);
+    const matchedPairStyle = 'animation-duration: 1s; animation-name: card-match;';
+    firstSelectedCard.setAttribute("style", matchedPairStyle);
+    secondSelectedCard.setAttribute("style", matchedPairStyle);
   }
 
   /**
