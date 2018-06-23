@@ -2,6 +2,18 @@
 class GameUI {
 
   /**
+   * @description Create and instance of GameUI
+   * @memberof GameUI
+   */
+  constructor() {
+    this.gameTimer = null;
+    this.gameTimerMinutes = 0;
+    this.gameTimerSeconds = 0;
+    this.secondsDOMElement = document.querySelector('.timer-seconds');
+    this.minutesDOMElement = document.querySelector('.timer-minutes');
+  }
+
+  /**
    * @description Build a DOM document fragment containing the cards the
    * user will interact with in a game
    * @param {Object[]} gameDeck Cards in the current game deck
@@ -90,6 +102,44 @@ class GameUI {
       } else {
         ratingNodeList[i].setAttribute('class', closedStarClasses);
       }
+    }
+  }
+
+  /**
+   * @description Start a new game timer
+   * @memberof GameUI
+   */
+  startTimer() {
+    this.stopTimer();
+    this.gameTimerMinutes = 0;
+    this.minutesDOMElement.innerText = '00';
+    this.gameTimerSeconds = 0;
+    this.secondsDOMElement.innerText = '00';
+    this.gameTimer = setInterval(this.showNewTime, 1000, this);
+  }
+
+  /**
+   * @description Update the game timer and add the results to the DOM
+   * @memberof GameUI
+   */
+  showNewTime(gameui) {
+    gameui.gameTimerSeconds += 1;
+    if (gameui.gameTimerSeconds >= 60) {
+      gameui.gameTimerSeconds = 0;
+      gameui.gameTimerMinutes += 1;
+      gameui.minutesDOMElement.innerText = ("0" + gameui.gameTimerMinutes).slice(-2);
+    }
+    gameui.secondsDOMElement.innerText = ("0" + gameui.gameTimerSeconds).slice(-2);
+  }
+
+  /**
+   * @description Stop the game timer if one is currently active
+   * @memberof GameUI
+   */
+  stopTimer() {
+    if (this.gameTimer !== null) {
+      clearInterval(this.gameTimer);
+      this.gameTimer = null;
     }
   }
 
