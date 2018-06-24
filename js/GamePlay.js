@@ -92,6 +92,7 @@ class GamePlay {
     if (this.gameUI.isCardMatched(selectedCardIndex)) {
       return false;
     }
+    // Ignore clicks until the preceeding pair of cards have been evaluated
     if (this.flipCount > 1) {
       return false;
     }
