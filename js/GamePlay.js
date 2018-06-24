@@ -16,7 +16,7 @@ class GamePlay {
     this.deck = null;
     this.gameDeck = [];
     this.gameUI = null;
-    this.playerRating = MIN_PLAYER_RATING;
+    this.playerRating = MAX_PLAYER_RATING;
     this.moveCount = 0;
     this.flipCount = 0;
     this.matchCount = 0;
@@ -58,7 +58,7 @@ class GamePlay {
    * @memberof GamePlay
    */
   startNewGame() {
-    this.playerRating = MIN_PLAYER_RATING;
+    this.playerRating = MAX_PLAYER_RATING;
     this.gameUI.updatePlayerRating(this.playerRating, MAX_PLAYER_RATING);
     this.moveCount = 0;
     this.gameUI.updateMoveCount(this.moveCount);
