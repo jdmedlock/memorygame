@@ -13,7 +13,7 @@ gamePlay.startNewGame();
 
 // Define event handlers for each UI element to start the game
 const deckElement = document.querySelector('.deck');
-deckElement.addEventListener('click', (event) => {
+document.querySelector('.deck').addEventListener('click', (event) => {
   gamePlay.turn(event.target.getAttribute('id'));
 });
 

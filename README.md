@@ -9,6 +9,7 @@
 * [Overview](#overview)
 * [How to Play](#how-to-play)
 * [Player UI Feature](#player-ui-features)
+* [Dependencies](#dependencies)
 * [Change Log](#change-log)
 * [Contributing](#contributing)
 * [Authors](#authors)
@@ -59,6 +60,20 @@ elapsed. The timer is stopped when the player wins the game.
 
 * Move Counter - Displays the number of turns the player has taken, starting
 with one at the first turn.
+
+## Dependencies
+
+This app has the following dependencies
+
+| Module/Library | Environment | Description | Related Files |
+|:---------------|:------------|:------------|:--------------|
+| NPM            | Development | Package manager | package.json |
+| WebPack        | Development | Bundler     | webpack.config.js |
+
+To build the production application bundle, `/dist/bundle-app.js` issue the
+command `npm run build` from the command line. This bundle must be referenced
+in the file `index.html` using the `<script src="dist/bundle-app.js"></script>`
+tag at the bottom of the `<body>` section of the source page.
 
 ## Change Log
 
