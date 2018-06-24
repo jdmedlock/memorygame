@@ -77,6 +77,18 @@ class GameUI {
   }
 
   /**
+   * @description Check if a card has been previously matched
+   * @param {Number} cardIndex Index of the card to check
+   * @returns {Boolean} true if the card was previously matched, otherwise false
+   * @memberof GameUI
+   */
+  isCardMatched(cardIndex) {
+    return document.getElementById(`${cardIndex}`)
+      .getAttribute('class')
+      .includes('match');
+  }
+
+  /**
    * @description Animate a pair of cards successfully matched by the player
    * @param {*} firstSelectedCard DOM element of the first matched card
    * @param {*} secondSelectedCard DOM element of the second matched card

@@ -22,7 +22,8 @@ class GamePlay {
     this.matchCount = 0;
     this.firstCard = undefined;
     this.deckFragment = null;
-    this.wait = ms => new Promise((r, j) => setTimeout(r, ms))
+    this.wait = ms => new Promise((r, j) => setTimeout(r, ms));
+    this.isTurnInprogress = false;
   }
 
   /**
@@ -83,12 +84,26 @@ class GamePlay {
    * @memberof GamePlay
    */
   turn(selectedCardIndex) {
-    this.gameUI.turnCardFaceUp(selectedCardIndex);
+    // Ensure we have a valid card index and the selected card wasn't matched
+    // in a previous turn
+    if (selectedCardIndex === null) {
+      return false;
+    }
+    if (this.gameUI.isCardMatched(selectedCardIndex)) {
+      return false;
+    }
+    if (this.flipCount > 1) {
+      return false;
+    }
 
+    this.gameUI.turnCardFaceUp(selectedCardIndex);
     this.flipCount += 1;
     if (this.flipCount === 1) {
       this.firstCard = selectedCardIndex;
     } else {
+      if (this.firstCard === selectedCardIndex) {
+        return false;
+      }
       this.moveCount += 1;
       this.gameUI.updateMoveCount(this.moveCount);
       if (!this.deck.isSymbolMatch(this.gameDeck, this.firstCard, selectedCardIndex)) {
@@ -98,6 +113,7 @@ class GamePlay {
       }
     }
 
+    // Check for the end of the current game
     if (this.matchCount >= MATCH_LIMIT) {
       this.gameUI.stopTimer();
       this.gameUI.showWinDialog(this, this.playerRating, this.moveCount);
