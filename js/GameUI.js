@@ -156,6 +156,40 @@ class GameUI {
     }
   }
 
+  /**
+   * @description Display the game win dialog with play metrics
+   * @param {*} gamePlay
+   * @param {*} playerRating
+   * @param {*} moveCount
+   * @memberof GameUI
+   */
+  showWinDialog(gamePlay, playerRating, moveCount) {
+    document.querySelector('.game-board').setAttribute('style', 'display: none');
+
+    document.querySelector('.win-minutes').innerText = this.gameTimerMinutes;
+    document.querySelector('.win-seconds').innerText = this.gameTimerSeconds;
+    document.querySelector('.win-moves').innerText = moveCount;
+    document.querySelector('.win-stars').innerText = playerRating;
+
+    const winButton = document.querySelector('.win-button');
+    winButton.gamePlayRef = gamePlay; // Make gamePlay available to event handler
+    winButton.addEventListener('click', this.setupForNewGame);
+    document.querySelector('.win-dialog').setAttribute('style', 'display: flex');
+  }
+
+  /**
+   * @description Win Button vent handler. Note that the 'win-button' element
+   * is expected to contain a 'gamePlayRef' attribute containing the reference
+   * to the GamePlay object instance.
+   * @param {*} event The event that was triggered
+   * @memberof GameUI
+   */
+  setupForNewGame(event) {
+    document.querySelector('.win-dialog').setAttribute('style', 'display: none');
+    document.querySelector('.game-board').setAttribute('style', 'display: flex');
+    event.target.gamePlayRef.startNewGame();
+  }
+
 }
 
 export default GameUI;

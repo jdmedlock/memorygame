@@ -100,6 +100,7 @@ class GamePlay {
 
     if (this.matchCount >= MATCH_LIMIT) {
       this.gameUI.stopTimer();
+      this.gameUI.showWinDialog(this, this.playerRating, this.moveCount);
       return true;
     }
     return false;
