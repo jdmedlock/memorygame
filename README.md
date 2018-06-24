@@ -21,6 +21,8 @@ Javascript section of the [Udacity Front-End Web Developer Nanodegree Program](h
 purpose of this assignment is to demonstrate mastery of the core web
 development skills - HTML, CSS, and JavaScript.
 
+You can play the game here --> [Memory Game](https://jdmedlock.github.io/memorygame/)
+
 ## How to Play
 
 This game is a browser-based card matching game that presents the player with
