@@ -89,6 +89,9 @@ class GamePlay {
     if (selectedCardIndex === null) {
       return false;
     }
+    if (this.firstCard === selectedCardIndex) {
+      return false;
+    }
     if (this.gameUI.isCardMatched(selectedCardIndex)) {
       return false;
     }
@@ -102,9 +105,6 @@ class GamePlay {
     if (this.flipCount === 1) {
       this.firstCard = selectedCardIndex;
     } else {
-      if (this.firstCard === selectedCardIndex) {
-        return false;
-      }
       this.moveCount += 1;
       this.gameUI.updateMoveCount(this.moveCount);
       if (!this.deck.isSymbolMatch(this.gameDeck, this.firstCard, selectedCardIndex)) {
